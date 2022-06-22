@@ -1,0 +1,192 @@
+USE [master]
+GO
+/****** Object:  Database [AlkChalDisney]    Script Date: 21-Jun-22 5:57:09 PM ******/
+CREATE DATABASE [AlkChalDisney]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'AlkChalDisney', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\AlkChalDisney.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'AlkChalDisney_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\AlkChalDisney_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [AlkChalDisney] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [AlkChalDisney].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [AlkChalDisney] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [AlkChalDisney] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [AlkChalDisney] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [AlkChalDisney] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [AlkChalDisney] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [AlkChalDisney] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [AlkChalDisney] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [AlkChalDisney] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [AlkChalDisney] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [AlkChalDisney] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [AlkChalDisney] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [AlkChalDisney] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [AlkChalDisney] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [AlkChalDisney] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [AlkChalDisney] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [AlkChalDisney] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [AlkChalDisney] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [AlkChalDisney] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [AlkChalDisney] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [AlkChalDisney] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [AlkChalDisney] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [AlkChalDisney] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [AlkChalDisney] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [AlkChalDisney] SET  MULTI_USER 
+GO
+ALTER DATABASE [AlkChalDisney] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [AlkChalDisney] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [AlkChalDisney] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [AlkChalDisney] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [AlkChalDisney] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [AlkChalDisney] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+ALTER DATABASE [AlkChalDisney] SET QUERY_STORE = OFF
+GO
+USE [AlkChalDisney]
+GO
+/****** Object:  Table [dbo].[Genero]    Script Date: 21-Jun-22 5:57:09 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Genero](
+	[id_genero] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](max) NOT NULL,
+	[imagen] [varchar](max) NULL,
+ CONSTRAINT [PK_Genero] PRIMARY KEY CLUSTERED 
+(
+	[id_genero] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[GeneroxPOS]    Script Date: 21-Jun-22 5:57:09 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[GeneroxPOS](
+	[id_pos] [int] NOT NULL,
+	[id_genero] [int] NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PeliculasOSeries]    Script Date: 21-Jun-22 5:57:09 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PeliculasOSeries](
+	[id_pos] [int] IDENTITY(1,1) NOT NULL,
+	[imagen] [varchar](max) NULL,
+	[titulo] [varchar](max) NOT NULL,
+	[fechaCreación] [date] NOT NULL,
+	[calificacion] [int] NOT NULL,
+ CONSTRAINT [PK_PeliculasOSeries] PRIMARY KEY CLUSTERED 
+(
+	[id_pos] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Personajes]    Script Date: 21-Jun-22 5:57:09 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Personajes](
+	[id_personaje] [int] IDENTITY(1,1) NOT NULL,
+	[imagen] [varchar](max) NULL,
+	[nombre] [varchar](max) NOT NULL,
+	[edad] [int] NULL,
+	[peso] [int] NULL,
+	[historia] [varchar](max) NULL,
+ CONSTRAINT [PK_Personajes] PRIMARY KEY CLUSTERED 
+(
+	[id_personaje] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PersonajexPelicula]    Script Date: 21-Jun-22 5:57:09 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PersonajexPelicula](
+	[id_personaje] [int] NOT NULL,
+	[id_pos] [int] NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Usuarios]    Script Date: 21-Jun-22 5:57:09 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Usuarios](
+	[id_user] [int] NOT NULL,
+	[name] [varchar](max) NOT NULL,
+	[email] [varchar](max) NOT NULL,
+	[password] [varchar](max) NOT NULL,
+ CONSTRAINT [PK_Usuarios] PRIMARY KEY CLUSTERED 
+(
+	[id_user] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[GeneroxPOS]  WITH CHECK ADD  CONSTRAINT [FK_GeneroxPOS_Genero] FOREIGN KEY([id_genero])
+REFERENCES [dbo].[Genero] ([id_genero])
+GO
+ALTER TABLE [dbo].[GeneroxPOS] CHECK CONSTRAINT [FK_GeneroxPOS_Genero]
+GO
+ALTER TABLE [dbo].[GeneroxPOS]  WITH CHECK ADD  CONSTRAINT [FK_GeneroxPOS_PeliculasOSeries] FOREIGN KEY([id_pos])
+REFERENCES [dbo].[PeliculasOSeries] ([id_pos])
+GO
+ALTER TABLE [dbo].[GeneroxPOS] CHECK CONSTRAINT [FK_GeneroxPOS_PeliculasOSeries]
+GO
+ALTER TABLE [dbo].[PersonajexPelicula]  WITH CHECK ADD  CONSTRAINT [FK_PersonajexPelicula_PeliculasOSeries] FOREIGN KEY([id_pos])
+REFERENCES [dbo].[PeliculasOSeries] ([id_pos])
+GO
+ALTER TABLE [dbo].[PersonajexPelicula] CHECK CONSTRAINT [FK_PersonajexPelicula_PeliculasOSeries]
+GO
+ALTER TABLE [dbo].[PersonajexPelicula]  WITH CHECK ADD  CONSTRAINT [FK_PersonajexPelicula_Personajes] FOREIGN KEY([id_personaje])
+REFERENCES [dbo].[Personajes] ([id_personaje])
+GO
+ALTER TABLE [dbo].[PersonajexPelicula] CHECK CONSTRAINT [FK_PersonajexPelicula_Personajes]
+GO
+USE [master]
+GO
+ALTER DATABASE [AlkChalDisney] SET  READ_WRITE 
+GO

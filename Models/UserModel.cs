@@ -14,6 +14,13 @@ namespace AlkemyChallenge.Models
             this.Email = email;
 
         }
+
+
+        public UserModel(string email)
+        {
+            this.Email = email;
+        }
+
         public int IdUser { get; }
         public string UserName { get; set; }
         public string Password { get; set; }

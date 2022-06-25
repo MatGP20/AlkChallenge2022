@@ -1,7 +1,10 @@
-﻿namespace AlkemyChallenge.Models
+﻿
+
+namespace AlkemyChallenge.Models
 {
     //using System;
     //using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     public class PeliculaSerie
     {
         public PeliculaSerie(string image, string title, DateOnly creationDate)
@@ -24,6 +27,8 @@
         public string Image { get; set; }
         public string Title { get; set; }
         public DateOnly CreationDate { get; set; }
+
+        [Range(1, 5)]
         public int Rate { get; set; }
 
 

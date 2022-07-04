@@ -1,4 +1,6 @@
-﻿namespace AlkemyChallenge.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AlkemyChallenge.Models
 {
     public class GeneroXPOS
     {
@@ -7,8 +9,11 @@
             this.IdPOS = idPOS;
             this.IdGenero = idGenero;
         }
-
+        [Key]
+        public int IdGenPOS { get; set; }
+        [Required]
         public int IdPOS { get; set; }
+        [Required]
         public int IdGenero { get; set; }
     }
 }

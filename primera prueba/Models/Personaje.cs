@@ -2,6 +2,7 @@
 {
     //using System;
     //using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     public class Personaje
     {   
         public Personaje(string image, string nameCharacter)
@@ -20,11 +21,16 @@
             this.History = history;
         }
 
-        public int IdPersonaje { get; }
+        [Key]
+        public int IdPersonaje { get; set; }
         //the image would be a URL link to the character image.
+        [Required]
         public string Image { get; set; }
+        [Required, StringLength(64)]
         public string NameCharacter { get; set; }
+        [Range(0,1000000)]
         public int Age { get; set; }
+        [Range(0, 1000000)]
         public int Weigth { get; set; }
         public string History { get; set; }
 

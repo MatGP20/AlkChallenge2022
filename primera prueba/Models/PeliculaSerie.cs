@@ -22,12 +22,14 @@ namespace AlkemyChallenge.Models
             this.CreationDate = creationDate;
             this.Rate = rate;
         }
-
-        public int IdPOS { get; }
+        [Key]
+        public int IdPOS { get; set; }
+        //the image would be a URL link to the character image.
+        [Required]
         public string Image { get; set; }
-        public string Title { get; set; }
-        public DateOnly CreationDate { get; set; }
-
+        [Required, StringLength(64)]
+        public string Title { get; set; }        
+        public DateOnly CreationDate { get; set; }        
         [Range(1, 5)]
         public int Rate { get; set; }
 

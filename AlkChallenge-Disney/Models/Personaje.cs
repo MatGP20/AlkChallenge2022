@@ -31,8 +31,8 @@
         [Range(0,1000000)]
         public int? Age { get; set; }
         [Range(0, 1000000)]
-        public int Weigth { get; set; }
-        public string History { get; set; }
+        public int? Weigth { get; set; }
+        public string? History { get; set; }
 
     }
 }

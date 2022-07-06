@@ -29,7 +29,7 @@ namespace AlkemyChallenge.Models
         public string Image { get; set; }
         [Required, StringLength(64)]
         public string Title { get; set; }        
-        public DateOnly? CreationDate { get; set; }        
+        public DateTime? CreationDate { get; set; }        
         [Range(1, 5)]
         public int? Rate { get; set; }
 

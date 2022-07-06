@@ -2,10 +2,11 @@
 
 namespace AlkemyChallenge.Models
 {
+    using Microsoft.AspNetCore.Identity;
     //using System;
     //using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    public class UserModel
+    public class UserModel : IdentityUser
     {
         //constructor for the Data because their can't be null
         //public UserModel(string userName, string password, string email)

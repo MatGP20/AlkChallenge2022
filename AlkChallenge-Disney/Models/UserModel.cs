@@ -1,13 +1,13 @@
-﻿//  User Model for set Database
-
-namespace AlkemyChallenge.Models
+﻿namespace AlkemyChallenge.Models
 {
     using Microsoft.AspNetCore.Identity;
-    //using System;
-    //using System.Collections.Generic;
+    using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    public class UserModel : IdentityUser
+    public class UserModel
     {
+        //all the commented code was for learning
+
         //constructor for the Data because their can't be null
         //public UserModel(string userName, string password, string email)
         //{
@@ -21,8 +21,10 @@ namespace AlkemyChallenge.Models
         //{
         //    this.Email = email;
         //}
+
         [Key]
         public int Id { get; set; }
+
         [Required,StringLength(50)]
         public string UserName { get; set; }
         [Required, StringLength(16)]

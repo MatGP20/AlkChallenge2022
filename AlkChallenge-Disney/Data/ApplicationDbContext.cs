@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AlkChallenge_Disney.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<UserModel>
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using AlkChallenge_Disney.Models;
 
 #nullable disable
 
@@ -159,6 +160,11 @@ namespace AlkChallenge_Disney.Data.Migrations
                 name: "IX_PersonajeXPOss_PersonajeId",
                 table: "PersonajeXPOss",
                 column: "PersonajeId");
+        }
+
+        protected override void Seed(AlkChallenge_Disney.Data.ApplicationDbContext dbContext) 
+        {
+            dbContext.
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
